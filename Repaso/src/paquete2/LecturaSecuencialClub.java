@@ -68,7 +68,7 @@ public class LecturaSecuencialClub {
         }
     }
     
-    public void establecerRegistroBuscado(String cadena) {
+    public void establecerRegistroBuscado(String cadena) { // recibe la informacion ingresada por teclado
         // 
         
         File f = new File(obtenerNombreArchivo());
@@ -113,7 +113,7 @@ public class LecturaSecuencialClub {
     public String toString() {
         String cadena = "Lista de Clubs\n";
         for (int i = 0; i < obtenerClubs().size(); i++) {
-            Club p = obtenerClubs().get(i);
+            Club p = obtenerClubs().get(i); // obtner la posicion de un array lista
             cadena = String.format("%s(%d) %s-%d-%s\n", cadena,
                     i + 1,
                     p.obtenerNombre(),

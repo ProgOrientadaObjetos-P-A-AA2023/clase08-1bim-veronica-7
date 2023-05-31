@@ -38,17 +38,31 @@ public class Principal {
                 } else {
                     if (opcion == 3) {
                         boolean jugador = agregarJugador();
-                        if (jugador) {
+                        if (jugador) { // si es igual a true
                             System.out.println("Jugador creado");
-                        } else {
+                        } else { // si es diferente de true
                             System.out.println("Jugador no creado");
                         }
                     } else {
                         if (opcion == 4) {
                             verJugadores();
-                        }else{
-                            System.out.println("Opción incorrecta");
+                        }else{ 
                         }
+                            System.out.println("Opción incorrecta");
+                            
+                        if (opcion == 5) { 
+                            System.out.println("Ingrese su jugador buscado:");
+                            String jugador = entrada.nextLine();
+                            
+                            boolean encontrado = verificarJugador();
+                            
+                            if(encontrado){
+                                System.out.println("Jugardor encontrado!");
+                            }else{
+                                System.out.println("El jugador no existe.");
+                            }
+                        }
+                        
                     }
 
                 }
@@ -63,7 +77,7 @@ public class Principal {
             }
         }
     }
-
+// organizacion itp
     public static void agregarClubs() {
         String nombreArchivo = "data/clubs.dat";
         Scanner entrada = new Scanner(System.in);
@@ -139,6 +153,21 @@ public class Principal {
         lectura.establecerJugadores();
         System.out.println(lectura);
         lectura.cerrarArchivo();
+    }
+    
+    public static boolean verificarJugador() {
+        boolean jugador = false;
+        Scanner entrada = new Scanner(System.in);
+        System.out.println("Ingrese su jugador buscado:");
+        String nombre = entrada.nextLine();
+                            
+        String nombreArchivo = "data/jugadores.dat";
+        LecturaSecuencialJugador lectura
+                = new LecturaSecuencialJugador(nombreArchivo);
+        
+        lectura.establecerRegistroBuscado(nombre);
+        Jugador g = lectura.obtenerRegistroBuscado();
+        return jugador;
     }
 
 }
